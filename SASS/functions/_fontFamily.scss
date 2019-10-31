@@ -1,0 +1,8 @@
+// Font Family
+@function fontFamily($value){
+    $serif : ', sans-serif';
+    //@return map-get($font,$value) + #{$serif};
+
+    @return unquote("'#{map-get($font, $value)}'#{$serif}");
+    //@return ${map-get($font,$value) + 'sans-serif'};
+}

@@ -1,0 +1,47 @@
+.header-main{
+    @include theme-gradient('negative');
+    color: color('primary-text');
+    @include padding(20px,null,20px,null);
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
+
+    @include headingStyle{
+        color: color('primary-text');
+    }
+
+    &--left{
+        @include mobile{
+            text-align: center;
+        }
+    }// --left
+
+    &--right{
+        @include text-align('right');
+    }// --right
+
+    .logo-main{
+        img{
+            max-width: 100%;
+        }
+    }
+
+    .navbar-default{
+        background-color: transparent;
+        border: none;
+        margin-top: 30px;
+    }
+
+    .navbar-default .navbar-nav > .active > a{
+        background-color: lighten($brand-primary, 10%);
+        color: color('primary-text');
+    }
+
+    .navbar-default .navbar-nav > .active > a:hover, 
+    .navbar-default .navbar-nav > .active > a:focus,
+    .navbar-default .navbar-nav > .open > a, 
+    .navbar-default .navbar-nav > .open > a:hover, 
+    .navbar-default .navbar-nav > .open > a:focus{
+        background-color: color('primary-text');
+        color: color('primary-text');
+    }
+
+}//header-main

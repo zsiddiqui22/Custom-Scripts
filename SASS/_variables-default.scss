@@ -1,0 +1,67 @@
+$base-font          :     14px;
+$avatar-resolution  :     30px;
+$widget-spacer      :     30px;
+
+$color:(
+  primary           :    #f54a08, //#e97300,
+  primary-text      :    #fff,
+  secondry          :    #ffc52a,
+  secondry-text     :    #fff,
+  grayed            :    #54565b,
+  font              :    #3a3a3a,
+  border            :    #dddddd
+);
+
+$state-block:(
+  border            :     #ffffff,
+  font              :     #ffffff,
+  bg                :     #54565b,
+  bg-green          :     #00833f,
+  bg-red            :     #cf102d,
+  bg-yellow         :     #f28b00
+);
+
+$font:(
+    base            :      'Didact Gothic',
+    heading         :      'Didact Gothic',
+);
+
+$font-size:(
+    xs              :       $base-font - 3px,   // extra small  - 11px
+    sm              :       $base-font - 2px,   // small        - 12px 
+    nr              :       $base-font,         // normal       - 14px
+    md              :       $base-font + 6px,  // middle       - 20px
+    lg              :       $base-font + 24px,  // large        - 38px
+    xlg             :       $base-font + 31px,  // extra large  - 45px
+);
+
+// Bootstrap 
+$brand-primary:   #f54a08; //#e97300;
+$brand-secondry:  #ffc52a;
+
+$panel-primary-border     : #dddddd; 
+$panel-primary-text       : color('primart-text');
+$panel-primary-heading-bg : $brand-primary;
+$panel-border-radius      : 10px;
+
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+$input-border-radius:            0px;//$border-radius-base !default;
+//** Large `.form-control` border radius
+$input-border-radius-large:      0px;//$border-radius-large !default;
+//** Small `.form-control` border radius
+$input-border-radius-small:      0px;//$border-radius-small !default;
+
+//** Border color for inputs on focus
+$input-border-focus:             lighten($brand-primary,10%);//#66afe9 !default;
+
+//** Placeholder text color
+$input-color-placeholder:        #999 !default;
+
+//** Default `.form-control` height
+$input-height-base:              38px;//($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+//** Large `.form-control` height
+$input-height-large:             38px;//(ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
+//** Small `.form-control` height
+$input-height-small:             38px;//(floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
+
+

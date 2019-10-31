@@ -1,0 +1,18 @@
+@import 'variables-default'; // Custom Default Variables
+
+$lang:  'ltr';
+
+/*
+@if $lang == 'ltr'{
+    right: 0;
+}
+@if $lang == 'rtl'{
+    left: 0;
+}
+*/
+
+// Bootstrap
+@import "bootstrap/bootstrap";
+
+// Common
+@import 'common-include';

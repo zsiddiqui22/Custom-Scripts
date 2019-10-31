@@ -1,0 +1,4 @@
+// Get Colors From Object
+@function state($value){
+    @return map-get($state-block,$value);
+}

@@ -1,0 +1,38 @@
+.quick-links{
+
+    &--items{
+        display: inline-block;
+        width: 32.33333%;
+        box-sizing: border-box;
+        @include padding(null,10px,null,10px);
+        color: color('grayed');
+        margin-bottom: 15px;
+
+        @if $lang == 'ltr'{
+            border-left: 2px solid color('grayed');
+        }
+        @if $lang == 'rtl'{
+            border-right: 2px solid color('grayed');
+        }
+
+        em{
+            font-size: fontSize('md');
+        }
+
+        small{
+            display: block;
+            @include text-align('left');
+            color: color('primary');
+            height: 32px;
+            overflow: hidden;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        &:hover,&:focus{
+            text-decoration: none;
+        }
+
+    }
+
+}

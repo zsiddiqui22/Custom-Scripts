@@ -1,0 +1,52 @@
+.state-block {
+    border-radius: 10px;
+    border: 1px solid color('border');
+    padding: 10px;
+    text-align: center;
+    background-color: state('bg');
+    
+    *{
+        color: state('font');
+    }
+
+    &.green{
+        background-color: state('bg-green');
+    }
+    &.red{
+        background-color: state('bg-red');
+    }
+    &.yellow{
+        background-color: state('bg-yellow');
+    }
+
+    ul{
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+
+        > li{
+            display: inline-block;
+            padding: 0 6px;
+            line-height: 1;
+
+            & + li{
+                border-left: 1px solid state('border');
+            }
+
+            a{
+                display: block;
+                padding: 3px 10px;
+            }
+        }
+    }
+
+    &--count {
+        margin: 16px 0 5px 0;
+        font-size: fontSize('xlg');
+    }
+
+    &:hover,&:focus{
+        text-decoration: none;
+    }
+    
+}

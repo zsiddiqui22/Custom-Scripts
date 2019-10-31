@@ -1,0 +1,81 @@
+.panel{
+    overflow: hidden;
+}
+
+.panel-gray{
+    @include panel-variant(color('border'), color('primary-text'), color('grayed'), transparent);
+}
+
+.panel-primary{
+    .panel-heading{
+        @include theme-gradient('positive');
+        color: color('primary-text');
+    }
+    .panel-title{
+        color: color('primary-text');
+    }
+    .panel-footer{
+        background-color: transparent;
+        @include text-align('right');
+    }
+}
+
+.panel-heading{
+    padding: 15px 20px;
+    font-size: fontSize('md');
+    border: none;
+}
+
+.panel-title{
+    font-size: fontSize('md');
+}
+
+.container-fluid {
+    @include desktop{
+        @include padding(null,30px,null,30px);
+    }
+}
+
+.dataTables_paginate {
+    display: table;
+    margin: auto;
+    float: none !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active,
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    color: color('primary') !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    background: transparent;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    font-weight: 700;
+    background-color: color('primary');
+    color: color('primary-text') !important;
+}
+
+.table>thead>tr>th{
+    color: color('primary');
+}
+.table>thead>tr>th,
+table.dataTable.no-footer{
+    border-bottom-color:  color('primary') !important; 
+}
+
+.table-hover>tbody>tr:hover{
+    @include theme-gradient('positive');
+    color: color('primary-text');
+    a{
+        color: color('primary-text');
+    }
+}

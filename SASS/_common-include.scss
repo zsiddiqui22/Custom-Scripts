@@ -1,0 +1,53 @@
+// Function
+@import 'functions/color',
+        'functions/fontFamily',
+        'functions/fontSizes',
+        'functions/state';
+
+// Mixins
+@import 'mixins/mixin_float',
+        'mixins/mixin_padding',
+        'mixins/mixin_margin',
+        'mixins/mixin_arrow',
+        'mixins/mixin_rotate',
+        'mixins/mixin_scale',
+        'mixins/mixin_skew',
+        'mixins/mixin_text-align',
+        'mixins/mixin_gradient',
+        'mixins/mixin_translate',
+        'mixins/mixin_perspective',        
+        'mixins/mixin_box-sizing',
+        'mixins/mixin_transition',
+        'mixins/mixin_transform',
+        'mixins/mixin_transform-style',
+        'mixins/mixin_transform-origin',
+        'mixins/mixin_backface-visibility',
+
+        'mixins/mixin_responsive-img',
+        'mixins/mixin_position-center',
+        'mixins/mixin_heading-style',
+        'mixins/mixin_reduce-grid',
+
+        
+        // MEDIA QUERIES
+        'mixins/mixin_mediaquery-desktop',
+        'mixins/mixin_mediaquery-tablet',
+        'mixins/mixin_mediaquery-mobile',
+        'mixins/mixin_mediaquery-custom';
+
+        
+// Components
+@import 'components/general',
+        'components/header',
+        'components/footer',
+        'components/state-block',
+        'components/quick-links';
+
+// Pages
+@import 'pages/home';
+
+// Plugins
+@import 'slick/slick.scss',
+        'slick/slick-theme';
+
+@import 'override';
