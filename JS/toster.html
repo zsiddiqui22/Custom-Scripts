@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Toaster</title>
+    <style>
+      html,body{
+        height:100%
+      }
+      .toast{
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 15px;
+        margin: 15px;
+        position: fixed;
+        top:10px;
+        right: 10px;
+      }
+    </style>
+</head>
+<body>
+    
+
+    <script src="jquery.js"></script>
+    <script>
+       var App = function() {
+
+        return {
+          toster: function(text) {
+            function ToastBuilder(options) {
+              // options are optional
+              var opts = options || {};
+
+              // setup some defaults
+              opts.defaultText = opts.defaultText || 'default text';
+              opts.displayTime = opts.displayTime || 3000;
+              opts.target = opts.target || 'body';
+
+              return function (text) {
+                $('<div/>')
+                  .addClass('toast')
+                  .prependTo($(opts.target))
+                  .text(text || opts.defaultText)
+                  .queue(function(next) {
+                    $(this).css({
+                      'opacity': 1
+                    });
+                    var topOffset = 15;
+                    $('.toast').each(function() {
+                      var $this = $(this);
+                      var height = $this.outerHeight();
+                      var offset = 15;
+                      $this.css('top', topOffset + 'px');
+
+                      topOffset += height + offset;
+                    });
+                    next();
+                  })
+                  .delay(opts.displayTime)
+                  .queue(function(next) {
+                    var $this = $(this);
+                    var width = $this.outerWidth() + 20;
+                    $this.css({
+                      'right': '-' + width + 'px',
+                      'opacity': 0
+                    });
+                    next();
+                  })
+                  .delay(600)
+                  .queue(function(next) {
+                    $(this).remove();
+                    next();
+                  });
+              };
+            }
+
+            // customize it with your own options
+            var myOptions = {
+              defaultText: 'Toast, yo!',
+              displayTime: 3000,
+              target: 'body'
+            };
+              //position: 'top right',   // TODO: make this */
+              //bgColor: 'rgba(0,0,0,0.5)', // TODO: make this */
+
+            // to get it started, instantiate a copy of
+            // ToastBuilder passing our custom options
+            var showtoast = new ToastBuilder(myOptions);
+
+            return showtoast(text);
+            
+            //showtoast($('#textbox').val());
+            
+          }, //toster
+        }
+
+       }();
+
+       App.toster('Welcome to Check Toster');
+
+       $('body')
+          .queue(function(next) {
+            App.toster('Hey look, toast!');
+            next();
+          }).delay(100)
+          .queue(function(next) {
+            App.toster('Sweet!');
+            next();
+          })
+          .delay(500);
+    </script>
+    
+</body>
+</html>
