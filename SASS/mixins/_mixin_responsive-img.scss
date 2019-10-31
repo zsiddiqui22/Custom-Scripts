@@ -1,0 +1,17 @@
+// @include responsiveImg(40%);
+@mixin responsiveImg($height) {
+    position: relative;
+    padding-top: $height; //40%;
+    width: 100%;
+    overflow: hidden;
+    img{
+        width: 100%;
+        // position: absolute;
+        // left: 0;
+        // top: 50%;
+        // transform: translateY(-50%);
+        @include poistionCenter;
+        min-height: 100%;
+    }
+    
+}

@@ -1,0 +1,11 @@
+@mixin reduce-grid($val) {
+    .row{
+        margin-left: -#{$val};
+        margin-right: -#{$val};
+
+        [class*="col-"],[class^="col-"]{
+            padding-left: $val;
+            padding-right: $val;
+        }
+    }
+}
