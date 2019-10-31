@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sticky Header</title>
+    <style>
+        .header-main {
+            padding: 40px;
+            border: 1px solid #ddd;
+            background-color: #ddd;
+            color: #777;
+            text-align: center;
+        }
+        .header-sticky{
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99;
+            transition: 1s all ease-in-out;
+            transform: translateY(-100%);
+        }
+        .header-sticky.active{
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slider img{
+            width: 100%;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+            <div class="header-main">
+                <h1>This is web Sticky Header</h1>
+            </div>
+            <div class="slider">
+                <img src="img/slide-01.jpg" alt="">
+                <img src="img/slide-01.jpg" alt="">
+                <img src="img/slide-01.jpg" alt="">
+                <img src="img/slide-01.jpg" alt="">
+                <img src="img/slide-01.jpg" alt="">
+            </div>
+    </div>
+    
+
+    <script src="jquery.js"></script>
+    <script>
+        var App = function () {
+
+            /*===================
+                STICKY HEADER
+            =====================*/
+            var _stickyHeader = function () {
+                var cloneHeader = $('.header-main').clone();
+                $('<div class="header-sticky"></div>').prependTo('.wrapper');
+                $('.header-sticky').html(cloneHeader);
+
+                // $('.header-sticky').each(function () {
+                //     var attributes = $(this).find('[data-target]').attr('data-target');
+                //     $(this).find('[data-target]').attr('data-target', attributes + 1);
+                //     var ids = $(this).find('[id]').attr('id');
+                //     $(this).find('[id]').attr('id', ids + 1);
+                // });
+
+                function checkStickyHeader() {
+                    if ($(window).width() > 767) {
+                        $(window).scroll(function () {
+                            if ($(this).scrollTop() >= 350) {
+                                $('.header-sticky').addClass('active');
+                            } else if ($(this).scrollTop() <= 200) {
+                                $('.header-sticky').removeClass('active');
+                            }
+                        });
+                    }
+                }
+
+                checkStickyHeader();
+
+                $(window).resize(function () {
+                    checkStickyHeader();
+                });
+
+            };
+
+            return {
+                init: function(){
+                    _stickyHeader();
+                }
+            }
+
+        }();
+
+        App.init();
+    </script>
+</body>
+
+</html>
