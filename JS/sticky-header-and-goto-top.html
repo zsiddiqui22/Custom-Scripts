@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -135,10 +135,18 @@
 
             };
 
+            /*======================
+                CHECK LANGUAGE
+            ========================*/
+            var _languageCheck = function(){
+                ($('html').attr('dir') == 'ltr') ? $('body').addClass('lang-eng') : $('body').addClass('lang-arb');
+            };
+
             return {
                 init: function () {
                     _stickyHeader();
                     _gotoTop();
+                    _languageCheck();
                 }
             }
 
