@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GSAP - Burger Icon</title>
+    <style>
+    /* svg{
+        border: 1px solid #ddd;   
+    } */
+    svg .line{
+        stroke:rgb(0,0,0);
+        stroke-width:5;
+    }
+    .js-x .line-two {
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <!-- 
+        https://www.youtube.com/watch?v=4XJ8yS0zpa4 
+        https://greensock.com/ease-visualizer/
+    -->
+    <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" width="55" height="40">
+        <line class="line line-one" x1="5" y1="10" x2="50" y2="10" fill="none"></line>
+        <line class="line line-two" x1="5" y1="20" x2="50" y2="20" fill="none"></line>
+        <line class="line line-three" x1="5" y1="30" x2="50" y2="30" fill="none"></line>
+    </svg>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../TweenMax.min.js"></script>
+    <script>
+        var hamburger = document.querySelector('.hamburger'),
+            lineOne = hamburger.querySelector('.line-one'),
+            lineTwo = hamburger.querySelector('.line-two'),
+            lineThree = hamburger.querySelector('.line-three'),
+            lines = [lineOne, lineTwo, lineThree];
+
+        var tlm = new TimelineMax({});
+
+        var toggleMenu = new TimelineMax({paused: true, reversed: true});
+
+        toggleMenu
+            .to(lineTwo, 0.125, {scaleX: 0}, 0)
+            // .to(lineOne, 0.125, {rotation: 45, transformOrigin: "50% 50%", y: 10, ease: Power2.easeInOut }, "slide") //, "+=.125"
+            // .to(lineThree, 0.125, {rotation: -45, transformOrigin: "50% 50%", y: -8, ease: Power2.easeInOut}, "slide");
+            .to(lineOne, 0.25, {transformOrigin: "50% 50%", y: 10, ease: Power2.easeInOut }, "slide") //, "+=.125"
+            .to(lineThree, 0.25, {transformOrigin: "50% 50%", y: -10, ease: Power2.easeInOut }, "slide")
+            .to(hamburger, 0.5, {rotation: 360, ease: Power4.easeInOut})
+            .to(lineOne, 0.25, {rotation: 45, ease: Power2.easeInOut}, "cross")
+            .to(lineThree, 0.25, {rotation: -45, ease: Power2.easeInOut}, "cross");
+
+
+
+        hamburger.addEventListener('click', function(){
+            hamburger.classList.toggle('js-x');
+            toggleMenu.reversed() ? toggleMenu.play() : toggleMenu.reversed(true);
+        });
+
+        hamburger.addEventListener('mouseenter',function(){
+            if(hamburger.classList.contains('js-x')){
+                return;
+            }
+            // tlm
+            // .to(lineOne, 1, {scaleX: 1.5})
+            // .to(lineOne, 1, {scaleX: 1});
+
+            tlm.staggerTo(lines, 0.20, {scaleX: 1.5, repeat: 1, yoyo: true, ease: Power2.easeInOut, svgOrigin: "-50 -50" }, 0.125)
+
+        });
+
+        // TweenMax.from(hamburger, 2, {x:100});
+    </script>
+</body>
+</html>
