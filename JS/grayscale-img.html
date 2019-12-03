@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gray Scale Image</title>
+</head>
+<body>
+    <img src="img/slide-01.jpg" alt="">    
+
+
+    <script src="jquery.js"></script>
+    <script>
+        var App = function () {
+
+            // toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
+            //   console.log('RESULT:', dataUrl)
+            // })
+          
+            return {
+                canvasLayer : function(location, id, width, height) {
+                    this.width = $(window).width();
+                    this.height = $(window).height();
+                    this.element = document.createElement('canvas');
+
+                    $(this.element)
+                    .attr('id', id)
+                    .text('unsupported browser')
+                    .width(width)
+                    .height(height)
+                    .appendTo(location);
+
+                    this.context = this.element.getContext("2d");
+                },
+                toDataURL : function(url, callback) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onload = function() {
+                        var reader = new FileReader();
+                        reader.onloadend = function() {
+                        callback(reader.result);
+                        }
+                        reader.readAsDataURL(xhr.response);
+                    };
+                    xhr.open('GET', url);
+                    xhr.responseType = 'blob';
+                    xhr.send();
+                },
+                grayScaleImg : function(ele){
+
+                    // Init
+                    $(ele).each(function(e){
+                        var imgWrap     =   '.grayscaleImg',
+                            getImgUrl   =   $(this).attr('src'),
+                            self        =   $(this);
+
+                        $(this).wrap("<div class='grayscaleImg' style='display: inline-block'>");
+                        $(this).addClass('grayscaleImg-orignal');
+                        //$(this).before('<canvas width="'+ self.width() +'" height="'+ self.height() +'"></canvas>');
+                        
+                        console.log($(this)[0].src);
+                        
+                        App.toDataURL($(this)[0].src, function(dataUrl) {
+                            //console.log('RESULT:', dataUrl)
+                            self.append('<img src="'+ dataUrl +'" alt="" class="grayscaleImg-base64">');
+                        });
+                        
+                    });
+
+                    // Setting up Canvas
+                    setTimeout(function(){
+
+                        $('.grayscaleImg').each(function(i){
+                            // var canvas  =   $(this).find('canvas'),
+                            //     ctx     =   canvas.getContext("2d"),
+                            //     srcimg  =   $(this).find('grayscaleImg-base64');
+
+                            // ctx.drawImage(srcImg, 0, 0, ctx.canvas.width, ctx.canvas.height);
+                            // let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+                            // let pixels = imgData.data;
+                            // for (var i = 0; i < pixels.length; i += 4) {
+                            
+                            // let lightness = parseInt((pixels[i] + pixels[i + 1] + pixels[i + 2])/3);
+                            //     pixels[i] = lightness; 
+                            //     pixels[i + 1] = lightness; 
+                            //     pixels[i + 2] = lightness; 
+                            // }
+                            // ctx.putImageData(imgData, 0, 0);
+                            App.canvasLayer($(this), i, $(this).find('.grayscaleImg-orignal').width(), $(this).find('.grayscaleImg-orignal').height() );
+                            
+                        });
+
+                    },1000);
+                    
+
+
+                },
+            }
+
+        }();
+        window.onload = function() {
+            App.grayScaleImg('img');
+        }
+    </script>
+</body>
+</html>
